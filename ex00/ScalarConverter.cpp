@@ -23,6 +23,7 @@ void	ScalarConverter::printInt(int i)
 	float f = static_cast<float>(i);
 	double d = static_cast<double>(i);
 
+	std::cout << "Int:" << std::endl;
 	std::cout << "char: " << (i > 127 || i < 0 ? "impossible"
 		: (std::isprint(i) ? "'" + std::string(1, c) + "'" : "Non displayable"))
 		<< std::endl;
@@ -37,6 +38,7 @@ void	ScalarConverter::printChar(char c)
 	float f = static_cast<float>(c);
 	double d = static_cast<double>(c);
 
+	std::cout << "Char:" << std::endl;
 	std::cout << "char: " << (c > 127 || c < 0 ? "impossible"
 		: (std::isprint(c) ? "'" + std::string(1, c) + "'" : "Non displayable"))
 		<< std::endl;
@@ -59,6 +61,7 @@ void 	ScalarConverter::printFloat(float f)
 	int i = static_cast<int>(f);
 	double d = static_cast<double>(f);
 
+	std::cout << "Float:" << std::endl;
 	std::cout << "char: " << (c > 127 || c < 0 ? "impossible"
 		: (std::isprint(c) ? "'" + std::string(1, c) + "'" : "Non displayable"))
 		<< std::endl;
@@ -76,6 +79,7 @@ void 	ScalarConverter::printDouble(double d)
 	int i = static_cast<int>(d);
 	float f = static_cast<float>(d);
 
+	std::cout << "Double:" << std::endl;
 	std::cout << "char: " << (c > 127 || c < 0 ? "impossible"
 		: (std::isprint(c) ? "'" + std::string(1, c) + "'" : "Non displayable"))
 		<< std::endl;
@@ -95,7 +99,7 @@ void	ScalarConverter::convert(const std::string &val)
 	{
 		if (std::isdigit(val[0]))
 		{
-			int d = std::stoi(val);
+			int d = std::atoi(val.c_str());
 			ScalarConverter::printInt(d);
 		}
 		else
@@ -105,8 +109,27 @@ void	ScalarConverter::convert(const std::string &val)
 		ScalarConverter::printSpecial(val);
 	else
 	{
-		double d = std::stod(val);
-		ScalarConverter::printDouble(d);
+		if (isFloat(val))
+		{
+			float f = std::atof(val.c_str());
+			ScalarConverter::printFloat(f);
+		}
+		else if (isDouble(val))
+		{
+			char* endPtr;
+			float d = std::strtod(val.c_str(), &endPtr);
+			if (*endPtr == '\0') {
+				ScalarConverter::printDouble(d);
+			} else
+				throw ScalarConverter::InvalidInputException();
+		}
+		else if (isInteger(val))
+		{
+			int d = std::atoi(val.c_str());
+			ScalarConverter::printInt(d);
+		}
+		else
+			throw ScalarConverter::InvalidInputException();
 	}
 }
 

@@ -7,6 +7,8 @@
 # include <stdexcept>
 # include <iostream>
 # include <cmath>
+# include <iomanip>
+# include "helpers.hpp"
 
 class ScalarConverter
 {
@@ -23,19 +25,11 @@ class ScalarConverter
 		static void printDouble(double d);
 		static void convert(const std::string &val);
 
-		class NonPrintableException : public std::exception
-		{
-			public:
-				virtual const char *what() const throw();
-		};
-
 		class InvalidInputException : public std::exception
 		{
 			public:
 				virtual const char *what() const throw();
 		};
 };
-
-bool	isSpecial(const std::string &val);
 
 #endif

@@ -7,7 +7,8 @@ SRCS = 	ScalarConverter.cpp \
 		helpers.cpp \
 		main.cpp
 
-INCLS = ScalarConverter.hpp
+INCLS = ScalarConverter.hpp \
+		helpers.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 
