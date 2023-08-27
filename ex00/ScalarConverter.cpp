@@ -37,7 +37,6 @@ void	ScalarConverter::printChar(char c)
 	float f = static_cast<float>(c);
 	double d = static_cast<double>(c);
 
-	std::cout << "Char:" << std::endl;
 	std::cout << "char: " << (c > 127 || c < 0 ? "impossible"
 		: (std::isprint(c) ? "'" + std::string(1, c) + "'" : "Non displayable"))
 		<< std::endl;
