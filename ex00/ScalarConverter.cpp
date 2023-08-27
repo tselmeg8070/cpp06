@@ -66,8 +66,14 @@ void 	ScalarConverter::printFloat(float f)
 		std::cout << "int: " << i << std::endl;
 	else
 		std::cout << "int: " << "impossible" << std::endl;
-	std::cout << "float: " << f << (f == std::floor(f) ? ".0f" : "f") << std::endl;
-	std::cout << "double: " << d << (d == std::floor(d) ? ".0" : "") << std::endl;
+	if (d >= std::numeric_limits<float>::min() && d <= std::numeric_limits<float>::max())
+		std::cout << "float: " << f << (f == std::floor(f) ? ".0f" : "f") << std::endl;
+	else
+		std::cout << "float: " << "impossible" << std::endl;
+	if (d >= std::numeric_limits<double>::min() && d <= std::numeric_limits<double>::max())
+		std::cout << "double: " << d << (d == std::floor(d) ? ".0" : "") << std::endl;
+	else
+		std::cout << "double: " << "impossible" << std::endl;
 }
 
 void 	ScalarConverter::printDouble(double d)
@@ -83,8 +89,14 @@ void 	ScalarConverter::printDouble(double d)
 		std::cout << "int: " << i << std::endl;
 	else
 		std::cout << "int: " << "impossible" << std::endl;
-	std::cout << "float: " << f << (f == std::floor(f) ? ".0f" : "f") << std::endl;
-	std::cout << "double: " << d << (d == std::floor(d) ? ".0" : "") << std::endl;
+	if (d >= std::numeric_limits<float>::min() && d <= std::numeric_limits<float>::max())
+		std::cout << "float: " << f << (f == std::floor(f) ? ".0f" : "f") << std::endl;
+	else
+		std::cout << "float: " << "impossible" << std::endl;
+	if (d >= std::numeric_limits<double>::min() && d <= std::numeric_limits<double>::max())
+		std::cout << "double: " << d << (d == std::floor(d) ? ".0" : "") << std::endl;
+	else
+		std::cout << "double: " << "impossible" << std::endl;
 }
 
 void	ScalarConverter::convert(const std::string &val)
