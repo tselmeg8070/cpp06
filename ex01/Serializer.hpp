@@ -4,9 +4,10 @@
 # include "Data.hpp"
 
 class	Serializer {
-	public:
+	private:
 		Serializer();
 		Serializer(Serializer &t);
+	public:
 		~Serializer();
 		Serializer & operator=(const Serializer &t);
 

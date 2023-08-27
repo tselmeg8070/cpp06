@@ -12,9 +12,10 @@
 
 class ScalarConverter
 {
-	public:
+	private:
 		ScalarConverter();
 		ScalarConverter(ScalarConverter &t);
+	public:
 		~ScalarConverter();
 		ScalarConverter & operator=(const ScalarConverter &t);
 

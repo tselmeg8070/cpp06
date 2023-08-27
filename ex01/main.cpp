@@ -11,4 +11,5 @@ int	main()
 	ptr = serializer.serialize(data);
 	std::cout << "Serialized into: " << ptr << std::endl;
 	std::cout << "Deserialized into: " << serializer.deserialize(ptr) << std::endl;
+	delete data;
 }
