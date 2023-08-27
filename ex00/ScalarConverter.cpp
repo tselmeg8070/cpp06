@@ -23,7 +23,6 @@ void	ScalarConverter::printInt(int i)
 	float f = static_cast<float>(i);
 	double d = static_cast<double>(i);
 
-	std::cout << "Int:" << std::endl;
 	std::cout << "char: " << (i > 127 || i < 0 ? "impossible"
 		: (std::isprint(i) ? "'" + std::string(1, c) + "'" : "Non displayable"))
 		<< std::endl;
@@ -61,7 +60,6 @@ void 	ScalarConverter::printFloat(float f)
 	int i = static_cast<int>(f);
 	double d = static_cast<double>(f);
 
-	std::cout << "Float:" << std::endl;
 	std::cout << "char: " << (c > 127 || c < 0 ? "impossible"
 		: (std::isprint(c) ? "'" + std::string(1, c) + "'" : "Non displayable"))
 		<< std::endl;
@@ -79,7 +77,6 @@ void 	ScalarConverter::printDouble(double d)
 	int i = static_cast<int>(d);
 	float f = static_cast<float>(d);
 
-	std::cout << "Double:" << std::endl;
 	std::cout << "char: " << (c > 127 || c < 0 ? "impossible"
 		: (std::isprint(c) ? "'" + std::string(1, c) + "'" : "Non displayable"))
 		<< std::endl;
@@ -103,7 +100,9 @@ void	ScalarConverter::convert(const std::string &val)
 			ScalarConverter::printInt(d);
 		}
 		else
+		{
 			ScalarConverter::printChar(val[0]);
+		}
 	}
 	else if (isSpecial(val))
 		ScalarConverter::printSpecial(val);
